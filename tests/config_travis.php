@@ -9,8 +9,8 @@
  */
 
 $fofTestConfig = array(
-	'25' => 'environments/2.5/unzip/',
-	'3x' => 'environments/3.x/unzip/',
+	'2.5' => 'environments/2.5/unzip/',
+	'3.x' => 'environments/3.x/unzip/',
 	'dbparams' => array(
 		'host'  => '127.0.0.1',
 		'user'  => 'travis',

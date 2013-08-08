@@ -44,6 +44,7 @@ $options = getopt('t', array('travis_local'));
 if(getenv('TRAVIS') || isset($options['t']) || isset($options['travis_local']))
 {
 	require_once __DIR__ . '/../config_travis.php';
+	$siteroot = $fofTestConfig[getenv('JVERSION_TEST')];
 }
 else
 {
@@ -51,7 +52,6 @@ else
 
 	// Load system defines
 	$siteroot = $fofTestConfig['site_root'];
-
 }
 
 if (file_exists($siteroot . '/defines.php')) {
