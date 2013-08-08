@@ -18,5 +18,3 @@ $fofTestConfig = array(
 		'db'    => 'fof_test'
 	)
 );
-
-var_dump($fofTestConfig);

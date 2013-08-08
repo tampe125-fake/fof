@@ -67,16 +67,24 @@ if (!defined('JPATH_TESTS'))
 	define('JPATH_TESTS', realpath(__DIR__ . '/..'));
 }
 
-// Import the platform in legacy mode.
-if (file_exists(JPATH_LIBRARIES . '/import.legacy.php'))
+if(getenv('JVERSION_TEST') == '3.x')
 {
-	// Joomla! 2.5
+	require_once JPATH_LIBRARIES . '/import.php';
+}
+elseif(getenv('JVERSION_TEST') == '2.5')
+{
 	require_once JPATH_LIBRARIES . '/import.legacy.php';
 }
 else
 {
-	// Joomla! 3.x
-	require_once JPATH_LIBRARIES . '/import.php';
+	if (file_exists(JPATH_LIBRARIES . '/import.legacy.php'))
+	{
+		require_once JPATH_LIBRARIES . '/import.legacy.php';
+	}
+	else
+	{
+		require_once JPATH_LIBRARIES . '/import.php';
+	}
 }
 
 // Bootstrap the CMS libraries.
