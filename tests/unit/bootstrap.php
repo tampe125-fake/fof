@@ -38,11 +38,21 @@ if(function_exists('date_default_timezone_get') && function_exists('date_default
 // Required by older versions of the CMS
 define('DS', DIRECTORY_SEPARATOR);
 
-// Load configuration
-require_once __DIR__ . '/../config.php';
+//Am I in Travis CI?
+$options = getopt('t', array('travis_local'));
 
-// Load system defines
-$siteroot = $fofTestConfig['site_root'];
+if(getenv('TRAVIS') || isset($options['t']) || isset($options['travis_local']))
+{
+	require_once __DIR__ . '/../config_travis.php';
+}
+else
+{
+	require_once __DIR__ . '/../config.php';
+
+	// Load system defines
+	$siteroot = $fofTestConfig['site_root'];
+
+}
 
 if (file_exists($siteroot . '/defines.php')) {
         include_once $siteroot . '/defines.php';

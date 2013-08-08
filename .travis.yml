@@ -1,0 +1,14 @@
+language: php
+php:
+  - 5.4
+  - 5.3
+
+env:
+  - JVERSION_TEST=25
+  - JVERSION_TEST=3x
+
+before_script:
+  - mysql -e 'create database fof_test;'
+  - mysql -e 'USE fof_test'
+
+script: phpunit --bootstrap=tests/unit/bootstrap.php tests
