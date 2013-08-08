@@ -7,9 +7,10 @@ env:
   - JVERSION_TEST=3.x
 
 before_script:
-  - pear config-set auto_discover 1
-  - pear install phpunit/DbUnit
-  - pear install pear.phpunit.de/PHPUnit
+  - pear clear-cache
+  - pear channel-discover pear.phpunit.de
+  - pear channel-discover pear.symfony-project.com
+  - pear install --alldeps phpunit/PHPUnit
   - mysql -e 'create database fof_test;'
   - mysql -e 'USE fof_test;'
   - if [[ "$JVERSION_TEST" == "2.5" ]]; then cp tests/environments/2.5/joomla.sql joomla.sql; fi
