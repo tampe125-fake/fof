@@ -13,4 +13,7 @@ before_script:
   - if [[ "$JVERSION_TEST" == "3.x" ]]; then cp tests/environments/3.x/joomla.sql joomla.sql; fi
   - mysql -u travis --password= -h 127.0.0.1 fof_test < joomla.sql
 
+notifications:
+  email: false
+
 script: phpunit --bootstrap=tests/unit/bootstrap.php tests

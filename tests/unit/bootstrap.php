@@ -44,8 +44,6 @@ $options = getopt('t', array('travis_local'));
 if(getenv('TRAVIS') || isset($options['t']) || isset($options['travis_local']))
 {
 	require_once __DIR__ . '/../config_travis.php';
-	echo getenv('JVERSION_TEST');
-	var_dump($fofTestConfig);
 	$siteroot = $fofTestConfig[getenv('JVERSION_TEST')];
 }
 else
