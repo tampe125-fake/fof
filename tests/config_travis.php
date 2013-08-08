@@ -9,8 +9,8 @@
  */
 
 $fofTestConfig = array(
-	'2.5' => realpath('environments/2.5/unzip'),
-	'3.x' => realpath('environments/3.x/unzip'),
+	'2.5' => realpath(__DIR__.'/environments/2.5/unzip'),
+	'3.x' => realpath(__DIR__.'environments/3.x/unzip'),
 	'dbparams' => array(
 		'host'  => '127.0.0.1',
 		'user'  => 'travis',
