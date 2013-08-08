@@ -7,7 +7,6 @@ env:
   - JVERSION_TEST=3.x
 
 before_script:
-  - composer install
   - mysql -e 'create database fof_test;'
   - mysql -e 'USE fof_test;'
   - if [[ "$JVERSION_TEST" == "2.5" ]]; then cp tests/environments/2.5/joomla.sql joomla.sql; fi
