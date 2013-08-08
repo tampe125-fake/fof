@@ -9,8 +9,8 @@ env:
 before_script:
   - mysql -e 'create database fof_test;'
   - mysql -e 'USE fof_test;'
-  - if [[ "$JVERSION_TEST" == "2.5" ]]; cp tests/environments/2.5/joomla.sql joomla.sql; fi
-  - if [[ "$JVERSION_TEST" == "3.x" ]]; cp tests/environments/3.x/joomla.sql joomla.sql; fi
+  - if [[ "$JVERSION_TEST" == "2.5" ]]; then cp tests/environments/2.5/joomla.sql joomla.sql; fi
+  - if [[ "$JVERSION_TEST" == "3.x" ]]; then cp tests/environments/3.x/joomla.sql joomla.sql; fi
   - mysql -u travis --password= -h 127.0.0.1 fof_test < joomla.sql
 
 script: phpunit --bootstrap=tests/unit/bootstrap.php tests
