@@ -41,7 +41,7 @@ define('DS', DIRECTORY_SEPARATOR);
 //Am I in Travis CI?
 $options = getopt('t', array('travis_local'));
 
-if(getenv('TRAVIS') || isset($options['t']) || isset($options['travis_local']))
+if(getenv('TRAVIS'))
 {
 	require_once __DIR__ . '/../config_travis.php';
 	$siteroot = $fofTestConfig[getenv('JVERSION_TEST')];
