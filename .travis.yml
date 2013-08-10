@@ -11,7 +11,7 @@ before_script:
   - pear channel-discover pear.symfony-project.com
   - pear install phpunit/DbUnit
   - mysql -e 'create database fof_test;'
-  - mysql -e "GRANT ALL PRIVILEGES ON fof_test.* TO 'travis'@'127.0.0.1'";
+  - mysql -e "GRANT ALL PRIVILEGES ON *.* TO 'travis'@'%' WITH GRANT OPTION;";
   - mysql -e 'USE fof_test;'
   - if [[ "$JVERSION_TEST" == "2.5" ]]; then cp tests/environments/2.5/joomla.sql joomla.sql; fi
   - if [[ "$JVERSION_TEST" == "3.x" ]]; then cp tests/environments/3.x/joomla.sql joomla.sql; fi
