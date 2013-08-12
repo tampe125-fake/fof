@@ -39,8 +39,6 @@ if(function_exists('date_default_timezone_get') && function_exists('date_default
 define('DS', DIRECTORY_SEPARATOR);
 
 //Am I in Travis CI?
-$options = getopt('t', array('travis_local'));
-
 if(getenv('TRAVIS'))
 {
 	require_once __DIR__ . '/../config_travis.php';
@@ -67,24 +65,15 @@ if (!defined('JPATH_TESTS'))
 	define('JPATH_TESTS', realpath(__DIR__ . '/..'));
 }
 
-if(getenv('JVERSION_TEST') == '3.x')
-{
-	require_once JPATH_LIBRARIES . '/import.php';
-}
-elseif(getenv('JVERSION_TEST') == '2.5')
+// In 3.x this file is still here, but if I require the import.php  I get errors with the session table
+// (path not found)
+if (file_exists(JPATH_LIBRARIES . '/import.legacy.php'))
 {
 	require_once JPATH_LIBRARIES . '/import.legacy.php';
 }
 else
 {
-	if (file_exists(JPATH_LIBRARIES . '/import.legacy.php'))
-	{
-		require_once JPATH_LIBRARIES . '/import.legacy.php';
-	}
-	else
-	{
-		require_once JPATH_LIBRARIES . '/import.php';
-	}
+	require_once JPATH_LIBRARIES . '/import.php';
 }
 
 // Bootstrap the CMS libraries.
@@ -94,11 +83,6 @@ require_once JPATH_LIBRARIES . '/cms.php';
 require_once __DIR__ . '/stubs/dbimport.php';
 $importer = new FteststubsDbimport;
 $importer->importdb();
-
-$db     = JFactory::getDbo();
-$debug = $db->setQuery('SHOW TABLES')->loadObjectList();
-file_put_contents(JPATH_TESTS.'/debug.txt', print_r($debug, true));
-
 
 // Register the FOF test classes.
 JLoader::registerPrefix('Ftest', JPATH_TESTS . '/unit/core');
