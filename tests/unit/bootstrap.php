@@ -96,9 +96,8 @@ $importer = new FteststubsDbimport;
 $importer->importdb();
 
 $db     = JFactory::getDbo();
-$debug  = "XXX\n";
-$debug .= $db->setQuery('SELECT * FROM jos_foftest_foobars')->loadObjectList();
-file_put_contents(JPATH_TESTS.'/debug.txt', $debug);
+$debug = $db->setQuery('SHOW TABLES')->loadObjectList();
+file_put_contents(JPATH_TESTS.'/debug.txt', print_r($debug, true));
 
 
 // Register the FOF test classes.
