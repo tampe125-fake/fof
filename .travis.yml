@@ -10,11 +10,10 @@ before_script:
   - pear channel-discover pear.phpunit.de
   - pear install phpunit/DbUnit
   - mysql -e 'create database fof_test;'
-  - mysql -e "GRANT ALL PRIVILEGES ON *.* TO 'travis'@'%' WITH GRANT OPTION;";
-  - mysql -e 'USE fof_test;'
   - if [[ "$JVERSION_TEST" == "2.5" ]]; then cp tests/environments/2.5/joomla.sql joomla.sql; fi
   - if [[ "$JVERSION_TEST" == "3.x" ]]; then cp tests/environments/3.x/joomla.sql joomla.sql; fi
-  - mysql -u travis --password= -h 127.0.0.1 fof_test < joomla.sql
+  - cat joomla.sql
+  - mysql fof_test < joomla.sql
   - cp build/templates/include.php fof/include.php
 
 notifications:
