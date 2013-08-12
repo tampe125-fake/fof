@@ -95,9 +95,10 @@ require_once __DIR__ . '/stubs/dbimport.php';
 $importer = new FteststubsDbimport;
 $importer->importdb();
 
-$db   = JFactory::getDbo();
-$rows = $db->setQuery('SELECT * FROM jos_foftest_foobars')->loadObjectList();
-file_put_contents(JPATH_TESTS.'/debug.txt', $rows);
+$db     = JFactory::getDbo();
+$debug  = "XXX\n";
+$debug .= $db->setQuery('SELECT * FROM jos_foftest_foobars')->loadObjectList();
+file_put_contents(JPATH_TESTS.'/debug.txt', $debug);
 
 
 // Register the FOF test classes.
