@@ -4,6 +4,7 @@ php:
   - 5.3
 
 env:
+  - JVERSION_TEST=2.5
   - JVERSION_TEST=3.x
 
 before_script:
