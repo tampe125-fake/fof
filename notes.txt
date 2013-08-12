@@ -12,3 +12,5 @@ When importing a new Bootstrap release you have to:
   then compile it with a LESS compiler such as SimpLESS
 
 • Remove all .modal definitions; that conflict with Joomla!
+
+---- Dummy change
